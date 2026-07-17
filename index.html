@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sumaira Safeer | Computer Engineer</title>
+  <style>
+    body { font-family: 'Segoe UI', system-ui, sans-serif; margin: 0; background: #f8f9fa; color: #333; line-height: 1.7; }
+    header { background: linear-gradient(135deg, #1e3a5f, #3498db); color: white; padding: 1rem 0; position: sticky; top: 0; z-index: 100; }
+    nav { max-width: 1200px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 0 2rem; }
+    .logo { font-size: 1.7rem; font-weight: 700; }
+    .nav-links a { color: white; margin-left: 1.8rem; text-decoration: none; font-weight: 500; }
+    .hero { background: linear-gradient(rgba(30,58,95,0.9), rgba(52,152,219,0.85)); color: white; text-align: center; padding: 100px 20px; }
+    .hero h1 { font-size: 3rem; margin: 0 0 10px; }
+    .container { max-width: 1200px; margin: auto; padding: 2rem; }
+    section { padding: 60px 0; }
+    h2 { color: #1e3a5f; border-bottom: 4px solid #3498db; display: inline-block; padding-bottom: 8px; }
+    .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.8rem; }
+    .card { background: white; border-radius: 12px; box-shadow: 0 5px 18px rgba(0,0,0,0.1); overflow: hidden; transition: 0.3s; }
+    .card:hover { transform: translateY(-8px); }
+    .card-content { padding: 1.5rem; }
+    .btn { background: #3498db; color: white; padding: 10px 22px; border-radius: 6px; text-decoration: none; font-weight: 600; display: inline-block; margin-top: 10px; }
+    .btn:hover { background: #2980b9; }
+    .repo-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+    .repo-item { background: white; padding: 1rem 1.3rem; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.08); }
+    footer { background: #1e3a5f; color: white; text-align: center; padding: 2rem; margin-top: 50px; }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <nav>
+      <div class="logo">Sumaira Safeer</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#all-repos">All Repos</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Hi, I'm Sumaira Safeer 👋</h1>
+    <p><strong>Final Year Computer Engineering Student</strong> at COMSATS University Islamabad, Attock Campus (CGPA 3.85/4.0)</p>
+    <a href="#projects" class="btn">View My Projects</a>
+  </section>
+
+  <div class="container">
+
+    <!-- About -->
+    <section id="about">
+      <h2>🌟 Current Focus</h2>
+      <p>Developing <strong>PipeGuard</strong> — an Intelligent Robotic System for Autonomous Pipeline Defect Detection using <strong>YOLOv8 + Raspberry Pi</strong> for real-time edge deployment.</p>
+      <p>Passionate about Edge AI and building practical intelligent systems for real-world problems in Pakistan.</p>
+    </section>
+
+    <!-- Featured Projects -->
+    <section id="projects">
+      <h2>🔥 Featured Projects</h2>
+      <div class="project-grid">
+
+        <div class="card">
+          <div class="card-content">
+            <h3>Pipeline Defect Detection Robot (FYP)</h3>
+            <p>Intelligent Robotic System for Autonomous Pipeline Defect Detection using YOLOv8 + Raspberry Pi edge deployment.</p>
+            <a href="https://github.com/sumairasafeer/Pipeline-Defect-Detection-Robot" class="btn" target="_blank">View on GitHub</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-content">
+            <h3>AES-128 FPGA Secure Communication</h3>
+            <p>Hardware implementation of real-time secure communication using UART + AES-128 encryption on FPGA (Verilog).</p>
+            <a href="https://github.com/sumairasafeer/AES128-UART-FPGA-Secure-Communication" class="btn" target="_blank">View on GitHub</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-content">
+            <h3>FreeRTOS Traffic Light Controller</h3>
+            <p>Real-time 4-way traffic light controller using FreeRTOS on Arduino with semaphore synchronization.</p>
+            <a href="https://github.com/sumairasafeer/FreeRTOS-Traffic-Light-Controller" class="btn" target="_blank">View on GitHub</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-content">
+            <h3>License Plate Detection (ALPR)</h3>
+            <p>Automatic License Plate Recognition system using classical image processing and computer vision techniques.</p>
+            <a href="https://github.com/sumairasafeer/License-Plate-Detection-ALPR" class="btn" target="_blank">View on GitHub</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- All Repositories -->
+    <section id="all-repos">
+      <h2>📁 All GitHub Repositories</h2>
+      <div class="repo-list">
+
+        <div class="repo-item">
+          <strong>Digital-Image-Processing-Labs-CPE415</strong><br>
+          <a href="https://github.com/sumairasafeer/Digital-Image-Processing-Labs-CPE415" target="_blank">View Repo →</a>
+        </div>
+        <div class="repo-item">
+          <strong>Programming-Fundamentals-Labs-CSC103</strong><br>
+          <a href="https://github.com/sumairasafeer/Programming-Fundamentals-Labs-CSC103" target="_blank">View Repo →</a>
+        </div>
+        <div class="repo-item">
+          <strong>Object-Oriented-Programming-CSC241-Labs</strong><br>
+          <a href="https://github.com/sumairasafeer/Object-Oriented-Programming-CSC241-Labs" target="_blank">View Repo →</a>
+        </div>
+        <div class="repo-item">
+          <strong>Operating-Systems-Labs-CSC322</strong><br>
+          <a href="https://github.com/sumairasafeer/Operating-Systems-Labs-CSC322" target="_blank">View Repo →</a>
+        </div>
+        <div class="repo-item">
+          <strong>Database-Systems-Labs-CSC371</strong><br>
+          <a href="https://github.com/sumairasafeer/Database-Systems-Labs-CSC371" target="_blank">View Repo →</a>
+        </div>
+        <div class="repo-item">
+          <strong>Computer-Organization-and-Architecture-Labs-CPE343</strong><br>
+          <a href="https://github.com/sumairasafeer/Computer-Organization-and-Architecture-Labs-CPE343" target="_blank">View Repo →</a>
+        </div>
+        <div class="repo-item">
+          <strong>HealthHelper-AI-Symptom-Checker</strong><br>
+          <a href="https://github.com/sumairasafeer/HealthHelper-AI-Symptom-Checker" target="_blank">View Repo →</a>
+        </div>
+        <div class="repo-item">
+          <strong>Robust-License-Plate-Detection-ALPR</strong><br>
+          <a href="https://github.com/sumairasafeer/Robust-License-Plate-Detection-ALPR" target="_blank">View Repo →</a>
+        </div>
+        <div class="repo-item">
+          <strong>Embedded-Systems-Workshop-CPE345</strong><br>
+          <a href="https://github.com/sumairasafeer/Embedded-Systems-Workshop-CPE345" target="_blank">View Repo →</a>
+        </div>
+        <div class="repo-item">
+          <strong>Reliable-Digital-Communication-System</strong><br>
+          <a href="https://github.com/sumairasafeer/Reliable-Digital-Communication-System" target="_blank">View Repo →</a>
+        </div>
+
+      </div>
+      <p style="margin-top: 15px;"><a href="https://github.com/sumairasafeer?tab=repositories" target="_blank"><strong>→ See all repositories on GitHub</strong></a></p>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <h2>🛠️ Technical Skills</h2>
+      <p><strong>AI & Vision:</strong> YOLOv8, PyTorch, OpenCV, TensorFlow Lite, CNNs<br>
+      <strong>Embedded Systems:</strong> Raspberry Pi, Arduino, FreeRTOS, PCA9685, Servo Control<br>
+      <strong>Hardware:</strong> FPGA (Xilinx Vivado), Verilog HDL, AES-128 Implementation<br>
+      <strong>Others:</strong> MATLAB, Digital Signal Processing, Networking (Cisco Packet Tracer), C/C++, Python</p>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2>📫 Get in Touch</h2>
+      <p><strong>Email:</strong> sumairaawann0502@gmail.com</p>
+      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sumaira-safeer-948804418/" target="_blank">linkedin.com/in/sumaira-safeer-948804418</a></p>
+      <p><strong>GitHub:</strong> <a href="https://github.com/sumairasafeer" target="_blank">github.com/sumairasafeer</a></p>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>© 2026 Sumaira Safeer • Final Year BS Computer Engineering • COMSATS University Islamabad, Attock Campus</p>
+  </footer>
+
+</body>
+</html>

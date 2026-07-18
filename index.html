@@ -1,175 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sumaira Safeer | Computer Engineer</title>
-  <style>
-    body { font-family: 'Segoe UI', system-ui, sans-serif; margin: 0; background: #f8f9fa; color: #333; line-height: 1.7; }
-    header { background: linear-gradient(135deg, #1e3a5f, #3498db); color: white; padding: 1rem 0; position: sticky; top: 0; z-index: 100; }
-    nav { max-width: 1200px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 0 2rem; }
-    .logo { font-size: 1.7rem; font-weight: 700; }
-    .nav-links a { color: white; margin-left: 1.8rem; text-decoration: none; font-weight: 500; }
-    .hero { background: linear-gradient(rgba(30,58,95,0.9), rgba(52,152,219,0.85)); color: white; text-align: center; padding: 100px 20px; }
-    .hero h1 { font-size: 3rem; margin: 0 0 10px; }
-    .container { max-width: 1200px; margin: auto; padding: 2rem; }
-    section { padding: 60px 0; }
-    h2 { color: #1e3a5f; border-bottom: 4px solid #3498db; display: inline-block; padding-bottom: 8px; }
-    .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.8rem; }
-    .card { background: white; border-radius: 12px; box-shadow: 0 5px 18px rgba(0,0,0,0.1); overflow: hidden; transition: 0.3s; }
-    .card:hover { transform: translateY(-8px); }
-    .card-content { padding: 1.5rem; }
-    .btn { background: #3498db; color: white; padding: 10px 22px; border-radius: 6px; text-decoration: none; font-weight: 600; display: inline-block; margin-top: 10px; }
-    .btn:hover { background: #2980b9; }
-    .repo-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
-    .repo-item { background: white; padding: 1rem 1.3rem; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.08); }
-    footer { background: #1e3a5f; color: white; text-align: center; padding: 2rem; margin-top: 50px; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sumaira Safeer | Embedded AI & Computer Vision Engineer</title>
+    <meta name="description" content="BS Computer Engineering Graduate | YOLOv8 Edge AI | Raspberry Pi | FPGA | Seeking Fully Funded MS in Embedded AI">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body { font-family: 'Inter', system-ui, sans-serif; }
+        .hero-bg { background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%); }
+        .section-header { position: relative; }
+        .section-header:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: #22c55e;
+            bottom: -8px;
+            left: 0;
+        }
+        .project-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        .nav-link {
+            transition: all 0.2s;
+        }
+        .nav-link:hover {
+            color: #22c55e;
+            border-bottom: 2px solid #22c55e;
+        }
+    </style>
 </head>
-<body>
-
-  <!-- Navbar -->
-  <header>
-    <nav>
-      <div class="logo">Sumaira Safeer</div>
-      <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#all-repos">All Repos</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
-      </div>
+<body class="bg-zinc-50 text-zinc-800">
+    <!-- NAVBAR -->
+    <nav class="bg-white border-b sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 bg-emerald-500 rounded-2xl flex items-center justify-center text-white font-bold text-xl">SS</div>
+                <div>
+                    <span class="font-semibold text-xl tracking-tight">Sumaira Safeer</span>
+                </div>
+            </div>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <a href="https://github.com/SumairaSafeer" target="_blank" 
+               class="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-2xl text-sm font-medium flex items-center gap-2 transition-colors">
+                <i class="fab fa-github"></i> GitHub
+            </a>
+        </div>
     </nav>
-  </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <h1>Hi, I'm Sumaira Safeer 👋</h1>
-    <p><strong>Final Year Computer Engineering Student</strong> at COMSATS University Islamabad, Attock Campus (CGPA 3.85/4.0)</p>
-    <a href="#projects" class="btn">View My Projects</a>
-  </section>
+    <!-- HERO -->
+    <section class="hero-bg py-24 md:py-32">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-2 bg-white rounded-3xl px-4 py-2 text-sm mb-6 shadow-sm">
+                <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+                Final Year • COMSATS University Islamabad
+            </div>
+            <h1 class="text-5xl md:text-6xl font-bold tracking-tighter mb-6">
+                Hi, I'm Sumaira Safeer
+            </h1>
+            <p class="text-2xl md:text-3xl text-zinc-600 max-w-2xl mx-auto">
+                Building intelligent edge systems for real-world impact
+            </p>
+            <p class="mt-4 text-lg text-zinc-600 max-w-md mx-auto">
+                BS Computer Engineering (CGPA 3.85/4.00) • Specialized in Embedded AI, Computer Vision &amp; Robotics
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mt-10">
+                <a href="#projects" 
+                   class="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-3xl font-semibold flex items-center justify-center gap-3 transition-all text-lg">
+                    View My Projects
+                    <i class="fas fa-arrow-down"></i>
+                </a>
+                <a href="#contact" 
+                   class="border-2 border-zinc-800 hover:bg-zinc-900 hover:text-white px-8 py-4 rounded-3xl font-semibold transition-all text-lg">
+                    Get In Touch
+                </a>
+            </div>
 
-  <div class="container">
-
-    <!-- About -->
-    <section id="about">
-      <h2>🌟 Current Focus</h2>
-      <p>Developing <strong>PipeGuard</strong> — an Intelligent Robotic System for Autonomous Pipeline Defect Detection using <strong>YOLOv8 + Raspberry Pi</strong> for real-time edge deployment.</p>
-      <p>Passionate about Edge AI and building practical intelligent systems for real-world problems in Pakistan.</p>
+            <div class="flex justify-center gap-8 mt-16 text-sm">
+                <div class="text-center">
+                    <div class="font-mono text-4xl font-semibold text-emerald-600">75%</div>
+                    <div class="text-zinc-500 text-xs tracking-widest mt-1">mAP IMPROVEMENT</div>
+                </div>
+                <div class="text-center">
+                    <div class="font-mono text-4xl font-semibold text-emerald-600">~10ms</div>
+                    <div class="text-zinc-500 text-xs tracking-widest mt-1">INFERENCE TIME</div>
+                </div>
+                <div class="text-center">
+                    <div class="font-mono text-4xl font-semibold text-emerald-600">3.85</div>
+                    <div class="text-zinc-500 text-xs tracking-widest mt-1">CGPA</div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Featured Projects -->
-    <section id="projects">
-      <h2>🔥 Featured Projects</h2>
-      <div class="project-grid">
-
-        <div class="card">
-          <div class="card-content">
-            <h3>Pipeline Defect Detection Robot (FYP)</h3>
-            <p>Intelligent Robotic System for Autonomous Pipeline Defect Detection using YOLOv8 + Raspberry Pi edge deployment.</p>
-            <a href="https://github.com/sumairasafeer/Pipeline-Defect-Detection-Robot" class="btn" target="_blank">View on GitHub</a>
-          </div>
+    <!-- ABOUT -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-16 items-center">
+                <div class="md:col-span-7">
+                    <h2 class="section-header text-4xl font-semibold mb-8">About Me</h2>
+                    <div class="prose prose-lg text-zinc-600">
+                        <p>Results-driven Computer Engineering student at COMSATS University Islamabad, Attock Campus. I specialize in <strong>embedded AI</strong>, computer vision, and real-time systems with a passion for deploying intelligent solutions on resource-constrained hardware.</p>
+                        <p>My Final Year Project focuses on an <strong>Intelligent Robotic System for Autonomous Pipeline Defect Detection</strong> using a modified YOLOv8 model, achieving significant performance gains on Raspberry Pi edge devices — directly addressing infrastructure challenges in Pakistan.</p>
+                        <p>Full merit-based scholarship recipient and national Prime Minister's Laptop Scheme awardee. Passionate about bridging hardware and AI to create practical, impactful technology.</p>
+                    </div>
+                </div>
+                <div class="md:col-span-5">
+                    <div class="bg-zinc-100 rounded-3xl p-8">
+                        <div class="flex gap-6">
+                            <div>
+                                <p class="text-emerald-600 font-medium">Location</p>
+                                <p class="font-medium">Mianwali, Punjab, Pakistan</p>
+                            </div>
+                            <div>
+                                <p class="text-emerald-600 font-medium">Email</p>
+                                <p class="font-medium">sumairaawann0502@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="mt-8 pt-8 border-t">
+                            <p class="text-emerald-600 font-medium mb-3">Currently</p>
+                            <ul class="space-y-3 text-sm">
+                                <li class="flex items-start gap-3"><i class="fas fa-check text-emerald-500 mt-1"></i> Generative AI & Prompt Engineering Intern @ NeuroFive Solutions</li>
+                                <li class="flex items-start gap-3"><i class="fas fa-check text-emerald-500 mt-1"></i> AI Intern @ Decode Labs</li>
+                                <li class="flex items-start gap-3"><i class="fas fa-check text-emerald-500 mt-1"></i> Finalizing FYP Thesis & Research Paper</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="card">
-          <div class="card-content">
-            <h3>AES-128 FPGA Secure Communication</h3>
-            <p>Hardware implementation of real-time secure communication using UART + AES-128 encryption on FPGA (Verilog).</p>
-            <a href="https://github.com/sumairasafeer/AES128-UART-FPGA-Secure-Communication" class="btn" target="_blank">View on GitHub</a>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-content">
-            <h3>FreeRTOS Traffic Light Controller</h3>
-            <p>Real-time 4-way traffic light controller using FreeRTOS on Arduino with semaphore synchronization.</p>
-            <a href="https://github.com/sumairasafeer/FreeRTOS-Traffic-Light-Controller" class="btn" target="_blank">View on GitHub</a>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-content">
-            <h3>License Plate Detection (ALPR)</h3>
-            <p>Automatic License Plate Recognition system using classical image processing and computer vision techniques.</p>
-            <a href="https://github.com/sumairasafeer/License-Plate-Detection-ALPR" class="btn" target="_blank">View on GitHub</a>
-          </div>
-        </div>
-
-      </div>
     </section>
 
-    <!-- All Repositories -->
-    <section id="all-repos">
-      <h2>📁 All GitHub Repositories</h2>
-      <div class="repo-list">
+    <!-- PROJECTS -->
+    <section id="projects" class="py-20 bg-zinc-50">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="section-header text-4xl font-semibold mb-4">Featured Projects</h2>
+            <p class="text-zinc-600 mb-12">Real-world applications of AI, embedded systems, and hardware design</p>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- FYP -->
+                <div class="project-card bg-white rounded-3xl overflow-hidden border border-zinc-100">
+                    <div class="h-56 bg-gradient-to-br from-emerald-600 to-teal-700 flex items-center justify-center text-white text-5xl">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="font-semibold text-xl">Intelligent Robotic Pipeline Inspection System</h3>
+                            <span class="text-xs bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full">FYP 2026</span>
+                        </div>
+                        <p class="text-zinc-600 mb-6">Modified YOLOv8 (Co-Bi YOLOv8) with CBAM + SE attention and BiFPN. 75% mAP50 improvement (0.3272 → 0.5755) on Raspberry Pi with ~10ms inference.</p>
+                        <div class="flex gap-2">
+                            <a href="https://github.com/SumairaSafeer/FYP-Intelligent-Robotic-System--Pipeline-Inspection" target="_blank" class="text-sm font-medium text-emerald-600 hover:underline flex items-center gap-1">
+                                <i class="fab fa-github"></i> View Repository
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="repo-item">
-          <strong>Digital-Image-Processing-Labs-CPE415</strong><br>
-          <a href="https://github.com/sumairasafeer/Digital-Image-Processing-Labs-CPE415" target="_blank">View Repo →</a>
-        </div>
-        <div class="repo-item">
-          <strong>Programming-Fundamentals-Labs-CSC103</strong><br>
-          <a href="https://github.com/sumairasafeer/Programming-Fundamentals-Labs-CSC103" target="_blank">View Repo →</a>
-        </div>
-        <div class="repo-item">
-          <strong>Object-Oriented-Programming-CSC241-Labs</strong><br>
-          <a href="https://github.com/sumairasafeer/Object-Oriented-Programming-CSC241-Labs" target="_blank">View Repo →</a>
-        </div>
-        <div class="repo-item">
-          <strong>Operating-Systems-Labs-CSC322</strong><br>
-          <a href="https://github.com/sumairasafeer/Operating-Systems-Labs-CSC322" target="_blank">View Repo →</a>
-        </div>
-        <div class="repo-item">
-          <strong>Database-Systems-Labs-CSC371</strong><br>
-          <a href="https://github.com/sumairasafeer/Database-Systems-Labs-CSC371" target="_blank">View Repo →</a>
-        </div>
-        <div class="repo-item">
-          <strong>Computer-Organization-and-Architecture-Labs-CPE343</strong><br>
-          <a href="https://github.com/sumairasafeer/Computer-Organization-and-Architecture-Labs-CPE343" target="_blank">View Repo →</a>
-        </div>
-        <div class="repo-item">
-          <strong>HealthHelper-AI-Symptom-Checker</strong><br>
-          <a href="https://github.com/sumairasafeer/HealthHelper-AI-Symptom-Checker" target="_blank">View Repo →</a>
-        </div>
-        <div class="repo-item">
-          <strong>Robust-License-Plate-Detection-ALPR</strong><br>
-          <a href="https://github.com/sumairasafeer/Robust-License-Plate-Detection-ALPR" target="_blank">View Repo →</a>
-        </div>
-        <div class="repo-item">
-          <strong>Embedded-Systems-Workshop-CPE345</strong><br>
-          <a href="https://github.com/sumairasafeer/Embedded-Systems-Workshop-CPE345" target="_blank">View Repo →</a>
-        </div>
-        <div class="repo-item">
-          <strong>Reliable-Digital-Communication-System</strong><br>
-          <a href="https://github.com/sumairasafeer/Reliable-Digital-Communication-System" target="_blank">View Repo →</a>
-        </div>
+                <!-- HealthHelper -->
+                <div class="project-card bg-white rounded-3xl overflow-hidden border border-zinc-100">
+                    <div class="h-56 bg-gradient-to-br from-violet-600 to-indigo-700 flex items-center justify-center text-white text-5xl">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-semibold text-xl mb-4">HealthHelper — RAG AI Symptom Checker</h3>
+                        <p class="text-zinc-600 mb-6">Built with Sentence Transformers, FAISS, Flan-T5 &amp; Streamlit. Semantic search + generative responses for intelligent health assistance.</p>
+                        <a href="https://github.com/SumairaSafeer/HealthHelper-AI-Symptom-Checker" target="_blank" class="text-sm font-medium text-emerald-600 hover:underline flex items-center gap-1">
+                            <i class="fab fa-github"></i> View Repository
+                        </a>
+                    </div>
+                </div>
 
-      </div>
-      <p style="margin-top: 15px;"><a href="https://github.com/sumairasafeer?tab=repositories" target="_blank"><strong>→ See all repositories on GitHub</strong></a></p>
+                <!-- More projects can be added similarly -->
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="https://github.com/SumairaSafeer?tab=repositories" target="_blank" 
+                   class="inline-flex items-center gap-3 text-emerald-600 hover:text-emerald-700 font-medium">
+                    See all <span class="text-2xl">→</span> repositories on GitHub
+                </a>
+            </div>
+        </div>
     </section>
 
-    <!-- Skills -->
-    <section id="skills">
-      <h2>🛠️ Technical Skills</h2>
-      <p><strong>AI & Vision:</strong> YOLOv8, PyTorch, OpenCV, TensorFlow Lite, CNNs<br>
-      <strong>Embedded Systems:</strong> Raspberry Pi, Arduino, FreeRTOS, PCA9685, Servo Control<br>
-      <strong>Hardware:</strong> FPGA (Xilinx Vivado), Verilog HDL, AES-128 Implementation<br>
-      <strong>Others:</strong> MATLAB, Digital Signal Processing, Networking (Cisco Packet Tracer), C/C++, Python</p>
+    <!-- SKILLS -->
+    <section id="skills" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="section-header text-4xl font-semibold mb-12">Technical Skills</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-x-16 gap-y-10">
+                <div>
+                    <h4 class="font-semibold mb-4 flex items-center gap-2"><i class="fas fa-brain text-emerald-500"></i> AI &amp; ML</h4>
+                    <ul class="space-y-2 text-zinc-600">
+                        <li>YOLOv8 • CBAM • BiFPN</li>
+                        <li>RAG • Sentence Transformers • Flan-T5</li>
+                        <li>Generative AI &amp; Prompt Engineering</li>
+                        <li>OpenCV • Hugging Face</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4 flex items-center gap-2"><i class="fas fa-microchip text-emerald-500"></i> Hardware &amp; Embedded</h4>
+                    <ul class="space-y-2 text-zinc-600">
+                        <li>Raspberry Pi • TensorFlow Lite • ONNX</li>
+                        <li>FPGA (Xilinx Vivado) • Verilog HDL</li>
+                        <li>Arduino • FreeRTOS</li>
+                        <li>PCA9685 Servos • I2C</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4 flex items-center gap-2"><i class="fas fa-laptop-code text-emerald-500"></i> Programming</h4>
+                    <ul class="space-y-2 text-zinc-600">
+                        <li>Python • C/C++ • Verilog</li>
+                        <li>MATLAB • MIPS Assembly</li>
+                        <li>SQL • HTML/CSS/JS</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact">
-      <h2>📫 Get in Touch</h2>
-      <p><strong>Email:</strong> sumairaawann0502@gmail.com</p>
-      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sumaira-safeer-948804418/" target="_blank">linkedin.com/in/sumaira-safeer-948804418</a></p>
-      <p><strong>GitHub:</strong> <a href="https://github.com/sumairasafeer" target="_blank">github.com/sumairasafeer</a></p>
+    <!-- CONTACT -->
+    <section id="contact" class="py-20 bg-emerald-50">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-semibold mb-6">Let's Connect</h2>
+            <p class="text-zinc-600 mb-10 max-w-md mx-auto">Open to research collaborations, MS opportunities, or discussions on edge AI and computer vision.</p>
+            
+            <div class="grid md:grid-cols-3 gap-6 max-w-2xl mx-auto">
+                <a href="mailto:sumairaawann0502@gmail.com" class="bg-white hover:bg-emerald-50 p-6 rounded-3xl border border-emerald-100 transition-colors group">
+                    <i class="fas fa-envelope text-3xl text-emerald-600 mb-4"></i>
+                    <p class="font-medium">Email</p>
+                    <p class="text-sm text-zinc-500 break-all">sumairaawann0502@gmail.com</p>
+                </a>
+                <a href="tel:+923085935330" class="bg-white hover:bg-emerald-50 p-6 rounded-3xl border border-emerald-100 transition-colors group">
+                    <i class="fas fa-phone text-3xl text-emerald-600 mb-4"></i>
+                    <p class="font-medium">Phone</p>
+                    <p class="text-sm text-zinc-500">+92 308 5935330</p>
+                </a>
+                <a href="https://github.com/SumairaSafeer" target="_blank" class="bg-white hover:bg-emerald-50 p-6 rounded-3xl border border-emerald-100 transition-colors group">
+                    <i class="fab fa-github text-3xl text-emerald-600 mb-4"></i>
+                    <p class="font-medium">GitHub</p>
+                    <p class="text-sm text-zinc-500">@SumairaSafeer</p>
+                </a>
+            </div>
+            
+            <div class="mt-16 text-xs text-zinc-500">
+                © 2026 Sumaira Safeer • BS Computer Engineering, COMSATS Attock
+            </div>
+        </div>
     </section>
 
-  </div>
-
-  <footer>
-    <p>© 2026 Sumaira Safeer • Final Year BS Computer Engineering • COMSATS University Islamabad, Attock Campus</p>
-  </footer>
-
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href').length > 1) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+        
+        // Tailwind script already loaded via CDN
+        console.log('%cPortfolio ready! Built for Sumaira Safeer 🚀', 'color: #10b981; font-weight: bold');
+    </script>
 </body>
 </html>

@@ -38,12 +38,12 @@
   h1,h2,h3,h4{font-family:'Space Grotesk', sans-serif; letter-spacing:-0.01em;}
   .mono{font-family:'IBM Plex Mono', monospace;}
   ::selection{background:var(--copper); color:#0A1F1A;}
-
+ 
   @media (prefers-reduced-motion: no-preference){
     .reveal{opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease;}
     .reveal.in{opacity:1; transform:translateY(0);}
   }
-
+ 
   /* ---------- layout shell + trace spine ---------- */
   .shell{max-width:var(--maxw); margin:0 auto; padding:0 28px; position:relative;}
   .spine{
@@ -60,7 +60,7 @@
     display:none;
   }
   @media(min-width:760px){ .via{display:block;} }
-
+ 
   /* ---------- nav ---------- */
   header.nav{
     position:sticky; top:0; z-index:50;
@@ -78,7 +78,7 @@
   .nav-links a:hover{color:var(--copper-bright);}
   .nav-links{display:none;}
   @media(min-width:620px){ .nav-links{display:flex;} }
-
+ 
   /* ---------- hero ---------- */
   .hero{padding:96px 0 72px;}
   .eyebrow{
@@ -109,7 +109,7 @@
   .btn.primary{background:var(--copper); color:#0A1F1A; border-color:var(--copper); font-weight:600;}
   .btn.primary:hover{background:var(--copper-bright); border-color:var(--copper-bright);}
   .btn:not(.primary):hover{border-color:var(--copper); color:var(--copper-bright);}
-
+ 
   /* ---------- section scaffolding ---------- */
   section{padding:64px 0; position:relative;}
   .section-head{margin-bottom:36px; position:relative;}
@@ -117,7 +117,7 @@
   .section-head h2{font-size:clamp(1.5rem,3.4vw,2rem); color:var(--silk);}
   .section-head p{color:var(--muted); max-width:56ch; margin-top:10px; font-size:.97rem;}
   hr.trace{border:none; height:1px; background:var(--trace); margin:0;}
-
+ 
   /* ---------- about ---------- */
   .about-grid{display:grid; grid-template-columns:1fr; gap:36px;}
   @media(min-width:760px){ .about-grid{grid-template-columns:1.4fr 1fr;} }
@@ -130,7 +130,8 @@
   .edu-item .deg{font-weight:600; color:var(--silk); font-size:.93rem;}
   .edu-item .org{color:var(--muted); font-size:.86rem; margin-top:2px;}
   .edu-item .yr{font-family:'IBM Plex Mono',monospace; color:var(--muted-dim); font-size:.78rem; margin-top:4px;}
-
+  .highlight-tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:18px; padding-top:16px; border-top:1px solid var(--trace);}
+ 
   /* ---------- experience timeline ---------- */
   .timeline{display:flex; flex-direction:column; gap:0;}
   .tl-item{
@@ -145,7 +146,7 @@
   .tl-item .org{color:var(--copper-bright); font-size:.88rem; margin-top:2px;}
   .tl-item .dates{font-family:'IBM Plex Mono',monospace; color:var(--muted-dim); font-size:.76rem; margin-top:3px;}
   .tl-item .desc{color:var(--muted); font-size:.9rem; margin-top:8px;}
-
+ 
   /* ---------- featured projects (component cards) ---------- */
   .proj-grid{display:grid; grid-template-columns:1fr; gap:16px;}
   @media(min-width:700px){ .proj-grid{grid-template-columns:1fr 1fr;} }
@@ -166,7 +167,7 @@
   }
   .proj-card .link{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--muted); text-decoration:none; display:inline-flex; align-items:center; gap:6px;}
   .proj-card .link:hover{color:var(--copper-bright);}
-
+ 
   /* ---------- all repos ---------- */
   .repo-cat{margin-bottom:30px;}
   .repo-cat h4{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--copper); text-transform:uppercase; letter-spacing:.08em; margin-bottom:12px; padding-bottom:8px; border-bottom:1px solid var(--trace);}
@@ -179,14 +180,14 @@
   .repo-row .rname{font-family:'IBM Plex Mono',monospace; font-size:.83rem; color:var(--silk); display:flex; align-items:center; gap:6px;}
   .repo-row .rname::before{content:'◇'; color:var(--copper); font-size:.7rem;}
   .repo-row .rdesc{color:var(--muted); font-size:.78rem; margin-top:4px; padding-left:16px;}
-
+ 
   /* ---------- skills ---------- */
   .skill-grid{display:grid; grid-template-columns:1fr; gap:14px;}
   @media(min-width:700px){ .skill-grid{grid-template-columns:1fr 1fr;} }
   .skill-mod{background:var(--bg-panel); border:1px solid var(--trace); border-radius:var(--radius); padding:18px 20px;}
   .skill-mod h4{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--copper); text-transform:uppercase; letter-spacing:.06em; margin-bottom:10px;}
   .skill-mod .items{color:var(--muted); font-size:.87rem;}
-
+ 
   /* ---------- achievements ---------- */
   .ach-list{display:flex; flex-direction:column; gap:0;}
   .ach-item{
@@ -196,7 +197,7 @@
   .ach-item .dot{width:6px; height:6px; border-radius:50%; background:var(--copper); margin-top:7px;}
   .ach-item .t{font-weight:600; color:var(--silk); font-size:.93rem;}
   .ach-item .d{color:var(--muted); font-size:.86rem; margin-top:3px;}
-
+ 
   /* ---------- contact / footer ---------- */
   footer{padding:72px 0 48px;}
   .contact-panel{
@@ -207,16 +208,16 @@
   .contact-panel p{color:var(--muted); max-width:44ch; margin:0 auto 26px;}
   .contact-row{display:flex; flex-wrap:wrap; gap:12px; justify-content:center;}
   .foot-note{margin-top:40px; text-align:center; font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--muted-dim);}
-
+ 
   ::-webkit-scrollbar{width:10px;}
   ::-webkit-scrollbar-track{background:var(--bg);}
   ::-webkit-scrollbar-thumb{background:var(--trace-bright); border-radius:5px;}
-
+ 
   :focus-visible{outline:2px solid var(--copper-bright); outline-offset:3px;}
 </style>
 </head>
 <body>
-
+ 
 <header class="nav">
   <div class="nav-inner">
     <div class="nav-mark">SS // engineering log</div>
@@ -230,10 +231,10 @@
     </ul>
   </div>
 </header>
-
+ 
 <div class="shell">
   <div class="spine" aria-hidden="true"></div>
-
+ 
   <!-- HERO -->
   <section class="hero" id="top">
     <div class="eyebrow">Computer Engineering · COMSATS University Islamabad</div>
@@ -251,9 +252,9 @@
       <a class="btn" href="https://www.linkedin.com/in/sumaira-safeer-948804418" target="_blank" rel="noopener">LinkedIn ↗</a>
     </div>
   </section>
-
+ 
   <hr class="trace">
-
+ 
   <!-- ABOUT -->
   <section id="about">
     <div class="via" aria-hidden="true"></div>
@@ -268,7 +269,7 @@
         <p>I'm a full merit-scholarship recipient and a national <b>Prime Minister's Laptop Scheme</b> awardee, currently looking at graduate research programs and engineering roles building intelligent systems that have to earn their keep on real constraints — latency, power, memory — not just on a benchmark.</p>
       </div>
       <div class="panel">
-        <h4>Education</h4>
+        <h4>Education & Achievements</h4>
         <div class="edu-item">
           <div class="deg">BS Computer Engineering</div>
           <div class="org">COMSATS University Islamabad, Attock Campus</div>
@@ -284,12 +285,18 @@
           <div class="org">Punjab Daanish High School for Girls, Mianwali</div>
           <div class="yr">2018 – 2020 · Grade A+</div>
         </div>
+        <div class="highlight-tags">
+          <span class="metric">Full Merit Scholarship</span>
+          <span class="metric">PM Laptop Scheme 2023</span>
+          <span class="metric">2nd Place — Robo ComBat</span>
+          <span class="metric">Handball Team Captain</span>
+        </div>
       </div>
     </div>
   </section>
-
+ 
   <hr class="trace">
-
+ 
   <!-- EXPERIENCE -->
   <section id="experience">
     <div class="via" aria-hidden="true"></div>
@@ -318,9 +325,9 @@
       </div>
     </div>
   </section>
-
+ 
   <hr class="trace">
-
+ 
   <!-- FEATURED PROJECTS -->
   <section id="projects">
     <div class="via" aria-hidden="true"></div>
@@ -330,7 +337,7 @@
       <p>Labeled the way components are labeled on a board — each one is a self-contained piece that had to work on its own before it worked in the system.</p>
     </div>
     <div class="proj-grid">
-
+ 
       <div class="proj-card">
         <div class="proj-top"><span class="designator">U1</span><span class="proj-tag">Computer Vision</span></div>
         <h3>Pipeline Inspection Robot — Modified YOLOv8</h3>
@@ -342,7 +349,7 @@
         </div>
         <a class="link" href="https://github.com/SumairaSafeer/FYP-Intelligent-Robotic-System--Pipeline-Inspection" target="_blank" rel="noopener">View repository ↗</a>
       </div>
-
+ 
       <div class="proj-card">
         <div class="proj-top"><span class="designator">U2</span><span class="proj-tag">Generative AI</span></div>
         <h3>HealthHelper — AI Symptom Checker</h3>
@@ -354,7 +361,7 @@
         </div>
         <a class="link" href="https://github.com/SumairaSafeer/HealthHelper-AI-Symptom-Checker" target="_blank" rel="noopener">View repository ↗</a>
       </div>
-
+ 
       <div class="proj-card">
         <div class="proj-top"><span class="designator">U3</span><span class="proj-tag">Hardware / FPGA</span></div>
         <h3>AES-128 UART Secure Communication</h3>
@@ -366,7 +373,7 @@
         </div>
         <a class="link" href="https://github.com/SumairaSafeer/AES128-UART-FPGA-Secure-Communication" target="_blank" rel="noopener">View repository ↗</a>
       </div>
-
+ 
       <div class="proj-card">
         <div class="proj-top"><span class="designator">U4</span><span class="proj-tag">Computer Vision</span></div>
         <h3>Robust License Plate Detection (ALPR)</h3>
@@ -377,7 +384,7 @@
         </div>
         <a class="link" href="https://github.com/SumairaSafeer/Robust_License_Plate_Detection_ALPR" target="_blank" rel="noopener">View repository ↗</a>
       </div>
-
+ 
       <div class="proj-card">
         <div class="proj-top"><span class="designator">U5</span><span class="proj-tag">Embedded Systems</span></div>
         <h3>FreeRTOS Traffic Light Controller</h3>
@@ -389,7 +396,7 @@
         </div>
         <a class="link" href="https://github.com/SumairaSafeer/FreeRTOS-Traffic-Light-Controller" target="_blank" rel="noopener">View repository ↗</a>
       </div>
-
+ 
       <div class="proj-card">
         <div class="proj-top"><span class="designator">U6</span><span class="proj-tag">Signal Processing</span></div>
         <h3>Reliable Digital Communication System</h3>
@@ -400,12 +407,12 @@
         </div>
         <a class="link" href="https://github.com/SumairaSafeer/Reliable-Digital-Communication-System" target="_blank" rel="noopener">View repository ↗</a>
       </div>
-
+ 
     </div>
   </section>
-
+ 
   <hr class="trace">
-
+ 
   <!-- ALL REPOS -->
   <section id="repos">
     <div class="via" aria-hidden="true"></div>
@@ -414,7 +421,7 @@
       <h2>Every public repository</h2>
       <p>Coursework, labs, and side builds — grouped by the system they touch.</p>
     </div>
-
+ 
     <div class="repo-cat">
       <h4>AI, ML & Computer Vision</h4>
       <div class="repo-list">
@@ -436,7 +443,7 @@
         </a>
       </div>
     </div>
-
+ 
     <div class="repo-cat">
       <h4>Embedded Systems & Hardware</h4>
       <div class="repo-list">
@@ -474,7 +481,7 @@
         </a>
       </div>
     </div>
-
+ 
     <div class="repo-cat">
       <h4>Signals, Networks & Systems</h4>
       <div class="repo-list">
@@ -500,7 +507,7 @@
         </a>
       </div>
     </div>
-
+ 
     <div class="repo-cat">
       <h4>Databases & Web</h4>
       <div class="repo-list">
@@ -522,7 +529,7 @@
         </a>
       </div>
     </div>
-
+ 
     <div class="repo-cat">
       <h4>Programming Foundations & Communication</h4>
       <div class="repo-list">
@@ -553,9 +560,9 @@
       </div>
     </div>
   </section>
-
+ 
   <hr class="trace">
-
+ 
   <!-- SKILLS -->
   <section id="skills">
     <div class="via" aria-hidden="true"></div>
@@ -590,9 +597,9 @@
       </div>
     </div>
   </section>
-
+ 
   <hr class="trace">
-
+ 
   <!-- ACHIEVEMENTS -->
   <section id="achievements">
     <div class="via" aria-hidden="true"></div>
@@ -608,7 +615,7 @@
       <div class="ach-item"><div class="dot"></div><div><div class="t">World Space Week 2021 (SUPARCO)</div><div class="d">Recognized for outstanding contribution and managerial skills organizing the event.</div></div></div>
     </div>
   </section>
-
+ 
   <!-- CONTACT -->
   <footer id="contact">
     <div class="contact-panel">
@@ -623,9 +630,9 @@
     </div>
     <div class="foot-note">Mianwali, Punjab, Pakistan · Built and maintained by Sumaira Safeer</div>
   </footer>
-
+ 
 </div>
-
+ 
 <script>
   // scroll reveal
   if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {

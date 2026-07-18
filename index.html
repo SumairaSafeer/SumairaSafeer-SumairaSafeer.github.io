@@ -1,648 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sumaira Safeer — Embedded AI & Computer Vision Engineer</title>
-<meta name="description" content="Portfolio of Sumaira Safeer — Computer Engineering student building AI systems that run on real hardware.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg: #0A1F1A;
-    --bg-panel: #0F2B22;
-    --bg-panel-2: #123326;
-    --trace: #21493A;
-    --trace-bright: #2F5F4C;
-    --copper: #C97C4A;
-    --copper-bright: #EFA268;
-    --silk: #EAF1EC;
-    --muted: #8FAA9C;
-    --muted-dim: #5C7C6E;
-    --radius: 3px;
-    --maxw: 980px;
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--bg);
-    color:var(--silk);
-    font-family:'Inter', sans-serif;
-    line-height:1.6;
-    font-size:16px;
-    background-image:
-      radial-gradient(circle at 1px 1px, rgba(143,170,156,0.09) 1px, transparent 1px);
-    background-size: 28px 28px;
-  }
-  a{color:inherit;}
-  h1,h2,h3,h4{font-family:'Space Grotesk', sans-serif; letter-spacing:-0.01em;}
-  .mono{font-family:'IBM Plex Mono', monospace;}
-  ::selection{background:var(--copper); color:#0A1F1A;}
- 
-  @media (prefers-reduced-motion: no-preference){
-    .reveal{opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease;}
-    .reveal.in{opacity:1; transform:translateY(0);}
-  }
- 
-  /* ---------- layout shell + trace spine ---------- */
-  .shell{max-width:var(--maxw); margin:0 auto; padding:0 28px; position:relative;}
-  .spine{
-    position:absolute; left:0; top:0; bottom:0; width:1px;
-    background:linear-gradient(to bottom, transparent, var(--trace) 4%, var(--trace) 96%, transparent);
-    display:none;
-  }
-  @media(min-width:760px){
-    .spine{display:block; left:-32px;}
-  }
-  .via{
-    position:absolute; left:-32px; width:9px; height:9px; border-radius:50%;
-    background:var(--bg); border:1.5px solid var(--copper); transform:translate(-4px,-4px);
-    display:none;
-  }
-  @media(min-width:760px){ .via{display:block;} }
- 
-  /* ---------- nav ---------- */
-  header.nav{
-    position:sticky; top:0; z-index:50;
-    backdrop-filter:blur(10px);
-    background:rgba(10,31,26,0.82);
-    border-bottom:1px solid var(--trace);
-  }
-  .nav-inner{
-    max-width:var(--maxw); margin:0 auto; padding:16px 28px;
-    display:flex; align-items:center; justify-content:space-between;
-  }
-  .nav-mark{font-family:'IBM Plex Mono',monospace; font-size:14px; color:var(--copper); letter-spacing:.04em;}
-  .nav-links{display:flex; gap:22px; list-style:none; font-family:'IBM Plex Mono',monospace; font-size:13px;}
-  .nav-links a{color:var(--muted); text-decoration:none; transition:color .2s;}
-  .nav-links a:hover{color:var(--copper-bright);}
-  .nav-links{display:none;}
-  @media(min-width:620px){ .nav-links{display:flex;} }
- 
-  /* ---------- hero ---------- */
-  .hero{padding:96px 0 72px;}
-  .eyebrow{
-    font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--copper);
-    letter-spacing:.14em; text-transform:uppercase; display:flex; align-items:center; gap:10px; margin-bottom:22px;
-  }
-  .eyebrow::before{content:''; width:22px; height:1px; background:var(--copper);}
-  .hero h1{
-    font-size:clamp(2.3rem, 6vw, 3.6rem); font-weight:700; color:var(--silk); line-height:1.05; max-width:11ch;
-  }
-  .hero .role{
-    margin-top:18px; font-size:clamp(1.05rem,2.4vw,1.3rem); color:var(--muted); max-width:46ch; font-weight:400;
-  }
-  .hero .role b{color:var(--copper-bright); font-weight:600;}
-  .hero-stats{
-    display:grid; grid-template-columns:repeat(3,1fr); gap:1px; margin-top:52px;
-    background:var(--trace); border:1px solid var(--trace); border-radius:var(--radius); overflow:hidden;
-  }
-  .stat{background:var(--bg-panel); padding:18px 16px;}
-  .stat .num{font-family:'Space Grotesk',sans-serif; font-size:1.5rem; font-weight:700; color:var(--copper-bright);}
-  .stat .lbl{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--muted); margin-top:4px; letter-spacing:.03em;}
-  .hero-links{margin-top:40px; display:flex; flex-wrap:wrap; gap:12px;}
-  .btn{
-    font-family:'IBM Plex Mono',monospace; font-size:13px; padding:11px 18px; border-radius:var(--radius);
-    text-decoration:none; display:inline-flex; align-items:center; gap:8px; border:1px solid var(--trace-bright);
-    color:var(--silk); transition:all .2s;
-  }
-  .btn.primary{background:var(--copper); color:#0A1F1A; border-color:var(--copper); font-weight:600;}
-  .btn.primary:hover{background:var(--copper-bright); border-color:var(--copper-bright);}
-  .btn:not(.primary):hover{border-color:var(--copper); color:var(--copper-bright);}
- 
-  /* ---------- section scaffolding ---------- */
-  section{padding:64px 0; position:relative;}
-  .section-head{margin-bottom:36px; position:relative;}
-  .section-head .eyebrow{margin-bottom:10px;}
-  .section-head h2{font-size:clamp(1.5rem,3.4vw,2rem); color:var(--silk);}
-  .section-head p{color:var(--muted); max-width:56ch; margin-top:10px; font-size:.97rem;}
-  hr.trace{border:none; height:1px; background:var(--trace); margin:0;}
- 
-  /* ---------- about ---------- */
-  .about-grid{display:grid; grid-template-columns:1fr; gap:36px;}
-  @media(min-width:760px){ .about-grid{grid-template-columns:1.4fr 1fr;} }
-  .about-text p{color:var(--muted); margin-bottom:14px; font-size:.98rem;}
-  .about-text b{color:var(--silk); font-weight:600;}
-  .panel{background:var(--bg-panel); border:1px solid var(--trace); border-radius:var(--radius); padding:22px;}
-  .panel h4{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--copper); letter-spacing:.08em; margin-bottom:14px; text-transform:uppercase;}
-  .edu-item{margin-bottom:16px; padding-bottom:16px; border-bottom:1px solid var(--trace);}
-  .edu-item:last-child{border:none; margin:0; padding:0;}
-  .edu-item .deg{font-weight:600; color:var(--silk); font-size:.93rem;}
-  .edu-item .org{color:var(--muted); font-size:.86rem; margin-top:2px;}
-  .edu-item .yr{font-family:'IBM Plex Mono',monospace; color:var(--muted-dim); font-size:.78rem; margin-top:4px;}
-  .highlight-tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:18px; padding-top:16px; border-top:1px solid var(--trace);}
- 
-  /* ---------- experience timeline ---------- */
-  .timeline{display:flex; flex-direction:column; gap:0;}
-  .tl-item{
-    position:relative; padding:0 0 28px 26px; border-left:1px solid var(--trace);
-  }
-  .tl-item:last-child{border-color:transparent; padding-bottom:0;}
-  .tl-item::before{
-    content:''; position:absolute; left:-4.5px; top:4px; width:8px; height:8px; border-radius:50%;
-    background:var(--bg); border:1.5px solid var(--copper);
-  }
-  .tl-item .role{font-weight:600; color:var(--silk); font-size:1rem;}
-  .tl-item .org{color:var(--copper-bright); font-size:.88rem; margin-top:2px;}
-  .tl-item .dates{font-family:'IBM Plex Mono',monospace; color:var(--muted-dim); font-size:.76rem; margin-top:3px;}
-  .tl-item .desc{color:var(--muted); font-size:.9rem; margin-top:8px;}
- 
-  /* ---------- featured projects (component cards) ---------- */
-  .proj-grid{display:grid; grid-template-columns:1fr; gap:16px;}
-  @media(min-width:700px){ .proj-grid{grid-template-columns:1fr 1fr;} }
-  .proj-card{
-    background:var(--bg-panel); border:1px solid var(--trace); border-radius:var(--radius);
-    padding:22px; transition:border-color .2s, transform .2s;
-  }
-  .proj-card:hover{border-color:var(--copper); transform:translateY(-2px);}
-  .proj-top{display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;}
-  .designator{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--copper); border:1px solid var(--trace-bright); border-radius:2px; padding:2px 7px;}
-  .proj-tag{font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--muted-dim); text-transform:uppercase; letter-spacing:.05em;}
-  .proj-card h3{font-size:1.05rem; color:var(--silk); margin-bottom:8px; line-height:1.3;}
-  .proj-card p{color:var(--muted); font-size:.87rem; margin-bottom:14px;}
-  .metric-row{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px;}
-  .metric{
-    font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--copper-bright);
-    background:rgba(201,124,74,0.08); border:1px solid rgba(201,124,74,0.25); padding:3px 8px; border-radius:2px;
-  }
-  .proj-card .link{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--muted); text-decoration:none; display:inline-flex; align-items:center; gap:6px;}
-  .proj-card .link:hover{color:var(--copper-bright);}
- 
-  /* ---------- all repos ---------- */
-  .repo-cat{margin-bottom:30px;}
-  .repo-cat h4{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--copper); text-transform:uppercase; letter-spacing:.08em; margin-bottom:12px; padding-bottom:8px; border-bottom:1px solid var(--trace);}
-  .repo-list{display:grid; grid-template-columns:1fr; gap:1px; background:var(--trace); border:1px solid var(--trace); border-radius:var(--radius); overflow:hidden;}
-  @media(min-width:700px){ .repo-list{grid-template-columns:1fr 1fr;} }
-  .repo-row{
-    background:var(--bg-panel); padding:14px 16px; text-decoration:none; display:block; transition:background .2s;
-  }
-  .repo-row:hover{background:var(--bg-panel-2);}
-  .repo-row .rname{font-family:'IBM Plex Mono',monospace; font-size:.83rem; color:var(--silk); display:flex; align-items:center; gap:6px;}
-  .repo-row .rname::before{content:'◇'; color:var(--copper); font-size:.7rem;}
-  .repo-row .rdesc{color:var(--muted); font-size:.78rem; margin-top:4px; padding-left:16px;}
- 
-  /* ---------- skills ---------- */
-  .skill-grid{display:grid; grid-template-columns:1fr; gap:14px;}
-  @media(min-width:700px){ .skill-grid{grid-template-columns:1fr 1fr;} }
-  .skill-mod{background:var(--bg-panel); border:1px solid var(--trace); border-radius:var(--radius); padding:18px 20px;}
-  .skill-mod h4{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--copper); text-transform:uppercase; letter-spacing:.06em; margin-bottom:10px;}
-  .skill-mod .items{color:var(--muted); font-size:.87rem;}
- 
-  /* ---------- achievements ---------- */
-  .ach-list{display:flex; flex-direction:column; gap:0;}
-  .ach-item{
-    display:grid; grid-template-columns:20px 1fr; gap:14px; padding:16px 0; border-bottom:1px solid var(--trace);
-  }
-  .ach-item:last-child{border:none;}
-  .ach-item .dot{width:6px; height:6px; border-radius:50%; background:var(--copper); margin-top:7px;}
-  .ach-item .t{font-weight:600; color:var(--silk); font-size:.93rem;}
-  .ach-item .d{color:var(--muted); font-size:.86rem; margin-top:3px;}
- 
-  /* ---------- contact / footer ---------- */
-  footer{padding:72px 0 48px;}
-  .contact-panel{
-    background:var(--bg-panel); border:1px solid var(--trace); border-radius:var(--radius);
-    padding:42px 32px; text-align:center;
-  }
-  .contact-panel h2{font-size:clamp(1.4rem,3.6vw,2rem); margin-bottom:14px;}
-  .contact-panel p{color:var(--muted); max-width:44ch; margin:0 auto 26px;}
-  .contact-row{display:flex; flex-wrap:wrap; gap:12px; justify-content:center;}
-  .foot-note{margin-top:40px; text-align:center; font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--muted-dim);}
- 
-  ::-webkit-scrollbar{width:10px;}
-  ::-webkit-scrollbar-track{background:var(--bg);}
-  ::-webkit-scrollbar-thumb{background:var(--trace-bright); border-radius:5px;}
- 
-  :focus-visible{outline:2px solid var(--copper-bright); outline-offset:3px;}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sumaira Safeer | Embedded AI & Computer Vision Engineer</title>
+    <meta name="description" content="BS Computer Engineering | YOLOv8 Edge AI Specialist | Raspberry Pi | FPGA | Seeking Fully Funded MS Opportunities">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body { font-family: 'Inter', system-ui, sans-serif; }
+        .hero-bg { background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%); }
+        .section-header:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 4px;
+            background: #22c55e;
+            bottom: -10px;
+            left: 0;
+        }
+        .project-card {
+            transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+        .project-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.15);
+        }
+    </style>
 </head>
-<body>
- 
-<header class="nav">
-  <div class="nav-inner">
-    <div class="nav-mark">SS // engineering log</div>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#repos">All Repos</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </div>
-</header>
- 
-<div class="shell">
-  <div class="spine" aria-hidden="true"></div>
- 
-  <!-- HERO -->
-  <section class="hero" id="top">
-    <div class="eyebrow">Computer Engineering · COMSATS University Islamabad</div>
-    <h1>Sumaira Safeer</h1>
-    <p class="role">I design AI systems that hold up once they leave the notebook — <b>computer vision and generative AI</b> optimized to run on real, constrained hardware.</p>
-    <div class="hero-stats">
-      <div class="stat"><div class="num">+75%</div><div class="lbl">mAP50 gain, edge-deployed YOLOv8</div></div>
-      <div class="stat"><div class="num">3.85</div><div class="lbl">CGPA / 4.00</div></div>
-      <div class="stat"><div class="num">~10ms</div><div class="lbl">inference time on Raspberry&nbsp;Pi</div></div>
-    </div>
-    <div class="hero-links">
-      <a class="btn primary" href="#projects">View projects</a>
-      <a class="btn" href="mailto:sumairaawann0502@gmail.com">Email me</a>
-      <a class="btn" href="https://github.com/SumairaSafeer" target="_blank" rel="noopener">GitHub ↗</a>
-      <a class="btn" href="https://www.linkedin.com/in/sumaira-safeer-948804418" target="_blank" rel="noopener">LinkedIn ↗</a>
-    </div>
-  </section>
- 
-  <hr class="trace">
- 
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="via" aria-hidden="true"></div>
-    <div class="section-head">
-      <div class="eyebrow">About</div>
-      <h2>Working at the hardware / software boundary</h2>
-    </div>
-    <div class="about-grid">
-      <div class="about-text">
-        <p>I'm a Computer Engineering student at <b>COMSATS University Islamabad, Attock Campus</b>, and most of what I build lives at the boundary between a trained model and the chip it has to run on. My final year project redesigned <b>YOLOv8</b> with CBAM and SE attention plus BiFPN feature fusion, then took that model all the way to a Raspberry Pi with TensorFlow Lite and ONNX — a 75% jump in detection accuracy that only mattered once it also ran in real time.</p>
-        <p>That end-to-end instinct — model, then hardware, then measurement — carries across everything I do: FPGA and digital logic design, real-time embedded control with FreeRTOS, signal processing over noisy channels, and network infrastructure design. I'm currently extending that range into <b>Generative AI and prompt engineering</b> through concurrent internships at NeuroFive Solutions and Decode Labs.</p>
-        <p>I'm a full merit-scholarship recipient and a national <b>Prime Minister's Laptop Scheme</b> awardee, currently looking at graduate research programs and engineering roles building intelligent systems that have to earn their keep on real constraints — latency, power, memory — not just on a benchmark.</p>
-      </div>
-      <div class="panel">
-        <h4>Education & Achievements</h4>
-        <div class="edu-item">
-          <div class="deg">BS Computer Engineering</div>
-          <div class="org">COMSATS University Islamabad, Attock Campus</div>
-          <div class="yr">Sep 2022 – 2026 · CGPA 3.85/4.00</div>
+<body class="bg-zinc-50 text-zinc-800">
+    <!-- NAVBAR -->
+    <nav class="bg-white border-b sticky top-0 z-50 shadow-sm">
+        <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 bg-emerald-600 rounded-2xl flex items-center justify-center text-white font-bold text-2xl">SS</div>
+                <span class="font-semibold text-2xl tracking-tight">Sumaira Safeer</span>
+            </div>
+            <div class="hidden md:flex gap-8 text-sm font-medium">
+                <a href="#about" class="hover:text-emerald-600 transition-colors">About</a>
+                <a href="#projects" class="hover:text-emerald-600 transition-colors">Projects</a>
+                <a href="#skills" class="hover:text-emerald-600 transition-colors">Skills</a>
+                <a href="#contact" class="hover:text-emerald-600 transition-colors">Contact</a>
+            </div>
+            <a href="https://github.com/SumairaSafeer" target="_blank" class="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-3xl text-sm font-medium transition-colors">
+                <i class="fab fa-github"></i> GitHub
+            </a>
         </div>
-        <div class="edu-item">
-          <div class="deg">F.Sc Pre-Engineering</div>
-          <div class="org">Punjab Daanish HSS for Girls, Mianwali</div>
-          <div class="yr">2020 – 2022 · Grade A+</div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero-bg py-28 md:py-36">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tighter mb-6">Sumaira Safeer</h1>
+            <p class="text-2xl md:text-3xl text-zinc-600">Embedded AI • Computer Vision • Robotics Engineer</p>
+            <p class="mt-6 max-w-2xl mx-auto text-lg text-zinc-600">
+                Final-year BS Computer Engineering (CGPA 3.85/4.00) at COMSATS University Islamabad. 
+                Passionate about deploying high-performance AI on edge devices for real-world infrastructure challenges.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4 mt-10">
+                <a href="#projects" class="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-3xl font-semibold flex items-center gap-3 text-lg">
+                    Explore Projects <i class="fas fa-arrow-down"></i>
+                </a>
+                <a href="https://github.com/SumairaSafeer" target="_blank" class="border border-zinc-800 hover:bg-zinc-900 hover:text-white px-8 py-4 rounded-3xl font-semibold text-lg transition-all">
+                    GitHub Profile
+                </a>
+            </div>
         </div>
-        <div class="edu-item">
-          <div class="deg">Matriculation (Science)</div>
-          <div class="org">Punjab Daanish High School for Girls, Mianwali</div>
-          <div class="yr">2018 – 2020 · Grade A+</div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-16">
+                <div class="md:col-span-7">
+                    <h2 class="section-header text-4xl font-semibold mb-8">About Me</h2>
+                    <div class="prose prose-lg text-zinc-600">
+                        <p>Results-driven Computer Engineering student specializing in <strong>embedded AI</strong>, computer vision, and real-time systems. I focus on making intelligent systems practical at the edge — especially for resource-constrained environments in developing countries like Pakistan.</p>
+                        <p>My Final Year Project achieved a <strong>75% improvement in mAP50</strong> by optimizing YOLOv8 with advanced attention mechanisms and deploying it on Raspberry Pi for autonomous pipeline defect detection.</p>
+                    </div>
+                </div>
+                <div class="md:col-span-5 bg-zinc-100 rounded-3xl p-8">
+                    <p class="text-emerald-600 font-medium mb-6">Education &amp; Achievements</p>
+                    <ul class="space-y-4">
+                        <li>🎓 BS Computer Engineering, COMSATS Attock (CGPA 3.85/4.00)</li>
+                        <li>🏆 Full Merit Scholarship + Prime Minister’s Laptop Award</li>
+                        <li>🥈 2nd Place – Robo ComBat Competition</li>
+                        <li>🤖 Handball Team Captain</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="highlight-tags">
-          <span class="metric">Full Merit Scholarship</span>
-          <span class="metric">PM Laptop Scheme 2023</span>
-          <span class="metric">2nd Place — Robo ComBat</span>
-          <span class="metric">Handball Team Captain</span>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="py-20 bg-zinc-50">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="section-header text-4xl font-semibold mb-4">Featured Projects</h2>
+            <p class="text-zinc-600 mb-12">From edge AI deployment to hardware-level security and real-time systems</p>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 1 -->
+                <div class="project-card bg-white rounded-3xl overflow-hidden border">
+                    <div class="h-52 bg-gradient-to-br from-emerald-700 to-teal-600 flex items-center justify-center text-white text-6xl">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="p-7">
+                        <h3 class="font-semibold text-xl mb-2">Intelligent Pipeline Defect Detection (FYP)</h3>
+                        <p class="text-sm text-emerald-600 mb-3">Co-Bi YOLOv8 • Raspberry Pi Deployment</p>
+                        <p class="text-zinc-600 text-sm mb-5">75% mAP50 boost (0.3272 → 0.5755). Real-time inference (~10ms) with Streamlit dashboard.</p>
+                        <a href="https://github.com/SumairaSafeer/FYP-Intelligent-Robotic-System--Pipeline-Inspection" target="_blank" class="text-emerald-600 text-sm font-medium flex items-center gap-2 hover:underline">
+                            <i class="fab fa-github"></i> Repository
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 2 -->
+                <div class="project-card bg-white rounded-3xl overflow-hidden border">
+                    <div class="h-52 bg-gradient-to-br from-violet-600 to-purple-600 flex items-center justify-center text-white text-6xl">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <div class="p-7">
+                        <h3 class="font-semibold text-xl mb-2">HealthHelper — RAG AI Symptom Checker</h3>
+                        <p class="text-zinc-600 text-sm mb-5">Sentence Transformers + FAISS + Flan-T5 + Streamlit</p>
+                        <a href="https://github.com/SumairaSafeer/HealthHelper-AI-Symptom-Checker" target="_blank" class="text-emerald-600 text-sm font-medium flex items-center gap-2 hover:underline">
+                            <i class="fab fa-github"></i> Repository
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 3 -->
+                <div class="project-card bg-white rounded-3xl overflow-hidden border">
+                    <div class="h-52 bg-gradient-to-br from-amber-600 to-orange-600 flex items-center justify-center text-white text-6xl">
+                        <i class="fas fa-traffic-light"></i>
+                    </div>
+                    <div class="p-7">
+                        <h3 class="font-semibold text-xl mb-2">FreeRTOS Real-Time Traffic Light Controller</h3>
+                        <p class="text-zinc-600 text-sm mb-5">Arduino Uno + Semaphore synchronization. Zero race conditions.</p>
+                        <a href="https://github.com/SumairaSafeer/FreeRTOS-Traffic-Light-Controller" target="_blank" class="text-emerald-600 text-sm font-medium flex items-center gap-2 hover:underline">
+                            <i class="fab fa-github"></i> Repository
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 4 -->
+                <div class="project-card bg-white rounded-3xl overflow-hidden border">
+                    <div class="h-52 bg-gradient-to-br from-rose-600 to-pink-600 flex items-center justify-center text-white text-6xl">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="p-7">
+                        <h3 class="font-semibold text-xl mb-2">AES-128 UART FPGA Secure Communication</h3>
+                        <p class="text-zinc-600 text-sm mb-5">Hardware implementation in Verilog on Xilinx Vivado.</p>
+                        <a href="https://github.com/SumairaSafeer/AES128-UART-FPGA-Secure-Communication" target="_blank" class="text-emerald-600 text-sm font-medium flex items-center gap-2 hover:underline">
+                            <i class="fab fa-github"></i> Repository
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 5 -->
+                <div class="project-card bg-white rounded-3xl overflow-hidden border">
+                    <div class="h-52 bg-gradient-to-br from-sky-600 to-cyan-600 flex items-center justify-center text-white text-6xl">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <div class="p-7">
+                        <h3 class="font-semibold text-xl mb-2">Robust License Plate Detection (ALPR)</h3>
+                        <p class="text-zinc-600 text-sm mb-5">Classical Digital Image Processing pipeline, robust to lighting &amp; angles.</p>
+                        <a href="https://github.com/SumairaSafeer/Robust_License_Plate_Detection_ALPR" target="_blank" class="text-emerald-600 text-sm font-medium flex items-center gap-2 hover:underline">
+                            <i class="fab fa-github"></i> Repository
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 6 -->
+                <div class="project-card bg-white rounded-3xl overflow-hidden border">
+                    <div class="h-52 bg-gradient-to-br from-lime-600 to-green-600 flex items-center justify-center text-white text-6xl">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <div class="p-7">
+                        <h3 class="font-semibold text-xl mb-2">Smart Agriculture WSN Greenhouse Monitoring</h3>
+                        <p class="text-zinc-600 text-sm mb-5">Cluster-based Mesh Topology Wireless Sensor Network.</p>
+                        <a href="https://github.com/SumairaSafeer/Smart-Agriculture-WSN-Greenhouse" target="_blank" class="text-emerald-600 text-sm font-medium flex items-center gap-2 hover:underline">
+                            <i class="fab fa-github"></i> Repository
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="https://github.com/SumairaSafeer?tab=repositories" target="_blank" class="inline-flex items-center gap-3 text-emerald-600 hover:text-emerald-700 font-semibold text-lg">
+                    View All Projects on GitHub <span class="text-3xl">→</span>
+                </a>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
- 
-  <hr class="trace">
- 
-  <!-- EXPERIENCE -->
-  <section id="experience">
-    <div class="via" aria-hidden="true"></div>
-    <div class="section-head">
-      <div class="eyebrow">Experience</div>
-      <h2>Internships & applied work</h2>
-    </div>
-    <div class="timeline">
-      <div class="tl-item">
-        <div class="role">Generative AI & Prompt Engineering Intern</div>
-        <div class="org">NeuroFive Solutions · Remote</div>
-        <div class="dates">Jul 2026 – Aug 2026</div>
-        <div class="desc">Applied generative AI and prompt-engineering work as part of a mentor-supported internship track focused on real-world model interaction design.</div>
-      </div>
-      <div class="tl-item">
-        <div class="role">Artificial Intelligence Intern</div>
-        <div class="org">Decode Labs · Remote</div>
-        <div class="dates">Jul 2026 – Aug 2026</div>
-        <div class="desc">Contributing to assigned AI projects and milestone deliverables — Project 1 shipped a rule-based conversational chatbot in Python.</div>
-      </div>
-      <div class="tl-item">
-        <div class="role">Final Year Project — Autonomous Pipeline Inspection</div>
-        <div class="org">COMSATS University Islamabad</div>
-        <div class="dates">2025 – 2026</div>
-        <div class="desc">Modified YOLOv8 (Co-Bi YOLOv8) for defect detection and classification in pipelines; deployed on Raspberry Pi for real-time robotic inspection.</div>
-      </div>
-    </div>
-  </section>
- 
-  <hr class="trace">
- 
-  <!-- FEATURED PROJECTS -->
-  <section id="projects">
-    <div class="via" aria-hidden="true"></div>
-    <div class="section-head">
-      <div class="eyebrow">Featured Projects</div>
-      <h2>Six builds worth a closer look</h2>
-      <p>Labeled the way components are labeled on a board — each one is a self-contained piece that had to work on its own before it worked in the system.</p>
-    </div>
-    <div class="proj-grid">
- 
-      <div class="proj-card">
-        <div class="proj-top"><span class="designator">U1</span><span class="proj-tag">Computer Vision</span></div>
-        <h3>Pipeline Inspection Robot — Modified YOLOv8</h3>
-        <p>Redesigned YOLOv8 with CBAM + SE attention and BiFPN feature fusion for autonomous defect detection and classification in-pipeline. Deployed to Raspberry Pi with TFLite/ONNX.</p>
-        <div class="metric-row">
-          <span class="metric">mAP50 0.327 → 0.576</span>
-          <span class="metric">~10ms inference</span>
-          <span class="metric">2,500 images</span>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="section-header text-4xl font-semibold mb-12">Technical Expertise</h2>
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="bg-zinc-50 p-8 rounded-3xl"><strong class="block text-emerald-600 mb-4">AI/ML</strong>YOLOv8, RAG, CNNs, Prompt Engineering, Hugging Face</div>
+                <div class="bg-zinc-50 p-8 rounded-3xl"><strong class="block text-emerald-600 mb-4">Embedded/HW</strong>Raspberry Pi, FPGA, Verilog, FreeRTOS, Arduino</div>
+                <div class="bg-zinc-50 p-8 rounded-3xl"><strong class="block text-emerald-600 mb-4">Programming</strong>Python, C/C++, MATLAB, Verilog, SQL</div>
+                <div class="bg-zinc-50 p-8 rounded-3xl"><strong class="block text-emerald-600 mb-4">Others</strong>Digital Signal Processing, Networking (Cisco), OpenCV</div>
+            </div>
         </div>
-        <a class="link" href="https://github.com/SumairaSafeer/FYP-Intelligent-Robotic-System--Pipeline-Inspection" target="_blank" rel="noopener">View repository ↗</a>
-      </div>
- 
-      <div class="proj-card">
-        <div class="proj-top"><span class="designator">U2</span><span class="proj-tag">Generative AI</span></div>
-        <h3>HealthHelper — AI Symptom Checker</h3>
-        <p>RAG-based symptom checker combining Sentence-Transformers for semantic retrieval, FAISS for vector search, and Flan-T5 for generation, deployed with Streamlit.</p>
-        <div class="metric-row">
-          <span class="metric">RAG</span>
-          <span class="metric">FAISS</span>
-          <span class="metric">Flan-T5</span>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-24 bg-emerald-600 text-white">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-semibold mb-6">Let's Build Something Impactful Together</h2>
+            <p class="text-emerald-100 mb-10">Open to MS research opportunities, collaborations, or industry roles in Embedded AI.</p>
+            
+            <div class="flex flex-col md:flex-row gap-6 justify-center">
+                <a href="mailto:sumairaawann0502@gmail.com" class="bg-white text-emerald-700 px-8 py-4 rounded-3xl font-medium flex items-center justify-center gap-3 hover:bg-emerald-50">
+                    <i class="fas fa-envelope"></i> Email Me
+                </a>
+                <a href="tel:+923085935330" class="border border-white px-8 py-4 rounded-3xl font-medium flex items-center justify-center gap-3 hover:bg-white/10">
+                    <i class="fas fa-phone"></i> +92 308 5935330
+                </a>
+            </div>
         </div>
-        <a class="link" href="https://github.com/SumairaSafeer/HealthHelper-AI-Symptom-Checker" target="_blank" rel="noopener">View repository ↗</a>
-      </div>
- 
-      <div class="proj-card">
-        <div class="proj-top"><span class="designator">U3</span><span class="proj-tag">Hardware / FPGA</span></div>
-        <h3>AES-128 UART Secure Communication</h3>
-        <p>Real-time secure serial communication on FPGA in Verilog — AES-128 encryption and decryption implemented directly over UART at the hardware level.</p>
-        <div class="metric-row">
-          <span class="metric">Verilog</span>
-          <span class="metric">AES-128</span>
-          <span class="metric">Real-time UART</span>
-        </div>
-        <a class="link" href="https://github.com/SumairaSafeer/AES128-UART-FPGA-Secure-Communication" target="_blank" rel="noopener">View repository ↗</a>
-      </div>
- 
-      <div class="proj-card">
-        <div class="proj-top"><span class="designator">U4</span><span class="proj-tag">Computer Vision</span></div>
-        <h3>Robust License Plate Detection (ALPR)</h3>
-        <p>Automatic license plate detection and extraction under real-world lighting and angle conditions, using classical digital image processing rather than deep learning.</p>
-        <div class="metric-row">
-          <span class="metric">Classical DIP</span>
-          <span class="metric">CEP project</span>
-        </div>
-        <a class="link" href="https://github.com/SumairaSafeer/Robust_License_Plate_Detection_ALPR" target="_blank" rel="noopener">View repository ↗</a>
-      </div>
- 
-      <div class="proj-card">
-        <div class="proj-top"><span class="designator">U5</span><span class="proj-tag">Embedded Systems</span></div>
-        <h3>FreeRTOS Traffic Light Controller</h3>
-        <p>4-way junction controller on Arduino Uno running FreeRTOS, coordinating 12 LEDs and an LCD through semaphore-synchronized tasks with zero race conditions.</p>
-        <div class="metric-row">
-          <span class="metric">FreeRTOS</span>
-          <span class="metric">12 LEDs</span>
-          <span class="metric">0 race conditions</span>
-        </div>
-        <a class="link" href="https://github.com/SumairaSafeer/FreeRTOS-Traffic-Light-Controller" target="_blank" rel="noopener">View repository ↗</a>
-      </div>
- 
-      <div class="proj-card">
-        <div class="proj-top"><span class="designator">U6</span><span class="proj-tag">Signal Processing</span></div>
-        <h3>Reliable Digital Communication System</h3>
-        <p>Analyzed BPSK/QPSK/16-QAM modulation over AWGN channels with convolutional coding and Viterbi decoding in MATLAB.</p>
-        <div class="metric-row">
-          <span class="metric">~3dB coding gain</span>
-          <span class="metric">4.32 Mbps @ BER 10⁻⁶</span>
-        </div>
-        <a class="link" href="https://github.com/SumairaSafeer/Reliable-Digital-Communication-System" target="_blank" rel="noopener">View repository ↗</a>
-      </div>
- 
-    </div>
-  </section>
- 
-  <hr class="trace">
- 
-  <!-- ALL REPOS -->
-  <section id="repos">
-    <div class="via" aria-hidden="true"></div>
-    <div class="section-head">
-      <div class="eyebrow">Full Archive</div>
-      <h2>Every public repository</h2>
-      <p>Coursework, labs, and side builds — grouped by the system they touch.</p>
-    </div>
- 
-    <div class="repo-cat">
-      <h4>AI, ML & Computer Vision</h4>
-      <div class="repo-list">
-        <a class="repo-row" href="https://github.com/SumairaSafeer/HealthHelper-AI-Symptom-Checker" target="_blank" rel="noopener">
-          <div class="rname">HealthHelper-AI-Symptom-Checker</div>
-          <div class="rdesc">RAG-based symptom checker — Sentence-Transformers, FAISS, Flan-T5, Streamlit</div>
-        </a>
-        <a class="repo-row" href="https://github.com/SumairaSafeer/Robust_License_Plate_Detection_ALPR" target="_blank" rel="noopener">
-          <div class="rname">Robust_License_Plate_Detection_ALPR</div>
-          <div class="rdesc">Classical digital image processing for real-world plate detection</div>
-        </a>
-        <a class="repo-row" href="https://github.com/SumairaSafeer/SumairaSafeer-DecodeLabs-Project1-RuleBasedChatbot" target="_blank" rel="noopener">
-          <div class="rname">DecodeLabs-Project1-RuleBasedChatbot</div>
-          <div class="rdesc">Rule-based AI chatbot — Decode Labs internship, Project 1</div>
-        </a>
-        <a class="repo-row" href="https://github.com/SumairaSafeer/Digital-Image-Processing-Labs-CPE415" target="_blank" rel="noopener">
-          <div class="rname">Digital-Image-Processing-Labs-CPE415</div>
-          <div class="rdesc">MATLAB-based image processing labs, COMSATS Attock</div>
-        </a>
-      </div>
-    </div>
- 
-    <div class="repo-cat">
-      <h4>Embedded Systems & Hardware</h4>
-      <div class="repo-list">
-        <a class="repo-row" href="https://github.com/SumairaSafeer/AES128-UART-FPGA-Secure-Communication" target="_blank" rel="noopener">
-          <div class="rname">AES128-UART-FPGA-Secure-Communication</div>
-          <div class="rdesc">Real-time AES-128 encryption/decryption on FPGA (Verilog)</div>
-        </a>
-        <a class="repo-row" href="https://github.com/SumairaSafeer/FreeRTOS-Traffic-Light-Controller" target="_blank" rel="noopener">
-          <div class="rname">FreeRTOS-Traffic-Light-Controller</div>
-          <div class="rdesc">4-way junction control, Arduino Uno + FreeRTOS, CPE345</div>
-        </a>
-        <a class="repo-row" href="https://github.com/SumairaSafeer/Pipelined-Processor-Hazard-Detection-Forwarding" target="_blank" rel="noopener">
-          <div class="rname">Pipelined-Processor-Hazard-Detection-Forwarding</div>
-          <div class="rdesc">Hazard detection & forwarding in a 7-stage pipelined processor</div>
-        </a>
-        <a class="repo-row" href="https://github.com/SumairaSafeer/Computer-Organization-and-Architecture--Labs-CPE343" target="_blank" rel="noopener">
-          <div class="rname">Computer-Organization-and-Architecture-CPE343</div>
-          <div class="rdesc">MIPS Assembly & Verilog HDL lab submissions</div>
-        </a>
-        <a class="repo-row" href="https://github.com/SumairaSafeer/Intel-8086-Microprocessor-Case-Study" target="_blank" rel="noopener">
-          <div class="rname">Intel-8086-Microprocessor-Case-Study</div>
-          <div class="rdesc">Microprocessor evaluation and case study</div>
-        </a>
-        <a class="repo-row" href="https://github.com/SumairaSafeer/Microprocessor-Systems-Interfacing-Labs" target="_blank" rel="noopener">
-          <div class="rname">Microprocessor-Systems-Interfacing-Labs</div>
-          <div class="rdesc">EEE342 labs — EMU8086 & PIC microcontroller</div>
-        </a>
-        <a class="repo-row" href="https://github.com/SumairaSafeer/20V-AC-to-12V-DC-Regulated-Power-Supply" target="_blank" rel="noopener">
-          <div class="rname">20V-AC-to-12V-DC-Regulated-Power-Supply</div>
-          <div class="rdesc">Design and analysis of a 220V AC → 12V DC regulated supply</div>
-        </a>
-        <a class="repo-row" href="https://github.com/SumairaSafeer/Computer-Aided-Engineering-Design-Assignment" target="_blank" rel="noopener">
-          <div class="rname">Computer-Aided-Engineering-Design-Assignment</div>
-          <div class="rdesc">CPE214 CAE design assignment</div>
-        </a>
-      </div>
-    </div>
- 
-    <div class="repo-cat">
-      <h4>Signals, Networks & Systems</h4>
-      <div class="repo-list">
-        <a class="repo-row" href="https://github.com/SumairaSafeer/Reliable-Digital-Communication-System" target="_blank" rel="noopener">
-          <div class="rname">Reliable-Digital-Communication-System</div>
-          <div class="rdesc">AWGN channel design — modulation + convolutional coding</div>
-        </a>
-        <a class="repo-row" href="https://github.com/SumairaSafeer/Principles-of-Communication-Systems-EEE351--Labs" target="_blank" rel="noopener">
-          <div class="rname">Principles-of-Communication-Systems-EEE351</div>
-          <div class="rdesc">LabVIEW, USRP/SDR, modulation & digital communication</div>
-        </a>
-        <a class="repo-row" href="https://github.com/SumairaSafeer/Smart-Agriculture-WSN-Greenhouse" target="_blank" rel="noopener">
-          <div class="rname">Smart-Agriculture-WSN-Greenhouse</div>
-          <div class="rdesc">Cluster-based mesh-topology WSN for greenhouse monitoring, EEE464</div>
-        </a>
-        <a class="repo-row" href="https://github.com/SumairaSafeer/PU-Scheduling-Algorithms-Comparison" target="_blank" rel="noopener">
-          <div class="rname">PU-Scheduling-Algorithms-Comparison</div>
-          <div class="rdesc">FCFS, SJF, Round Robin & Priority CPU scheduling in C++</div>
-        </a>
-        <a class="repo-row" href="https://github.com/SumairaSafeer/Operating-Systems-Labs-CSC322" target="_blank" rel="noopener">
-          <div class="rname">Operating-Systems-Labs-CSC322</div>
-          <div class="rdesc">Linux CLI, processes, threads, synchronization & shell scripting</div>
-        </a>
-      </div>
-    </div>
- 
-    <div class="repo-cat">
-      <h4>Databases & Web</h4>
-      <div class="repo-list">
-        <a class="repo-row" href="https://github.com/SumairaSafeer/Database-Systems-Labs-CSC371" target="_blank" rel="noopener">
-          <div class="rname">Database-Systems-Labs-CSC371</div>
-          <div class="rdesc">Microsoft Access & SQL lab submissions</div>
-        </a>
-        <a class="repo-row" href="https://github.com/SumairaSafeer/DB-Smart-Home-Database-Design" target="_blank" rel="noopener">
-          <div class="rname">DB-Smart-Home-Database-Design</div>
-          <div class="rdesc">Smart home technology database design</div>
-        </a>
-        <a class="repo-row" href="https://github.com/SumairaSafeer/Fruit-Bazaar-Website-Database" target="_blank" rel="noopener">
-          <div class="rname">Fruit-Bazaar-Website-Database</div>
-          <div class="rdesc">E-commerce database design & web application</div>
-        </a>
-        <a class="repo-row" href="https://github.com/SumairaSafeer/Library-Management-System-Database" target="_blank" rel="noopener">
-          <div class="rname">Library-Management-System-Database</div>
-          <div class="rdesc">Database design & web application integration</div>
-        </a>
-      </div>
-    </div>
- 
-    <div class="repo-cat">
-      <h4>Programming Foundations & Communication</h4>
-      <div class="repo-list">
-        <a class="repo-row" href="https://github.com/SumairaSafeer/Object-Oriented-Programming-CSC241-Labs" target="_blank" rel="noopener">
-          <div class="rname">Object-Oriented-Programming-CSC241-Labs</div>
-          <div class="rdesc">OOP labs, assignments & Car Rental System project in C++</div>
-        </a>
-        <a class="repo-row" href="https://github.com/SumairaSafeer/GUI-Arithmetic-Calculator-Windows-Forms-Project" target="_blank" rel="noopener">
-          <div class="rname">GUI-Arithmetic-Calculator-Windows-Forms</div>
-          <div class="rdesc">GUI arithmetic calculator, Windows Forms (C++)</div>
-        </a>
-        <a class="repo-row" href="https://github.com/SumairaSafeer/Functions-Recursion-Fibonacci-C-Programming" target="_blank" rel="noopener">
-          <div class="rname">Functions-Recursion-Fibonacci-C-Programming</div>
-          <div class="rdesc">Functions, recursion & Fibonacci sequence in C</div>
-        </a>
-        <a class="repo-row" href="https://github.com/SumairaSafeer/Programming-Fundamentals-Labs-CSC103" target="_blank" rel="noopener">
-          <div class="rname">Programming-Fundamentals-Labs-CSC103</div>
-          <div class="rdesc">C basics — loops, functions, arrays & strings</div>
-        </a>
-        <a class="repo-row" href="https://github.com/SumairaSafeer/7Cs_Business_Communication_Assignment" target="_blank" rel="noopener">
-          <div class="rname">7Cs_Business_Communication_Assignment</div>
-          <div class="rdesc">Applying the 7 Cs of business communication</div>
-        </a>
-        <a class="repo-row" href="https://github.com/SumairaSafeer/Interviews_and_Its_Types" target="_blank" rel="noopener">
-          <div class="rname">Interviews_and_Its_Types</div>
-          <div class="rdesc">Interviews as a tool in business communication & recruitment</div>
-        </a>
-      </div>
-    </div>
-  </section>
- 
-  <hr class="trace">
- 
-  <!-- SKILLS -->
-  <section id="skills">
-    <div class="via" aria-hidden="true"></div>
-    <div class="section-head">
-      <div class="eyebrow">Skills</div>
-      <h2>Toolkit, by layer</h2>
-    </div>
-    <div class="skill-grid">
-      <div class="skill-mod">
-        <h4>Programming</h4>
-        <div class="items">C, C++, Python, Verilog HDL, MIPS Assembly</div>
-      </div>
-      <div class="skill-mod">
-        <h4>AI / ML & Computer Vision</h4>
-        <div class="items">YOLOv8, OpenCV, CNNs, Generative AI, Prompt Engineering, Hugging Face, FAISS, Google Colab</div>
-      </div>
-      <div class="skill-mod">
-        <h4>Embedded & Hardware</h4>
-        <div class="items">Raspberry Pi, Arduino, FPGA (Xilinx Vivado), FreeRTOS, Digital Logic Design, Proteus</div>
-      </div>
-      <div class="skill-mod">
-        <h4>Signal Processing</h4>
-        <div class="items">MATLAB, FIR/IIR Filter Design, BPSK/QPSK/16-QAM, SNR Analysis</div>
-      </div>
-      <div class="skill-mod">
-        <h4>Networking</h4>
-        <div class="items">Cisco Packet Tracer, TCP/IP, DHCP, DNS, VLAN, Subnetting, Routing</div>
-      </div>
-      <div class="skill-mod">
-        <h4>Databases & Tools</h4>
-        <div class="items">MySQL, Oracle Database, MS Access, VS Code, LabVIEW, AutoCAD</div>
-      </div>
-    </div>
-  </section>
- 
-  <hr class="trace">
- 
-  <!-- ACHIEVEMENTS -->
-  <section id="achievements">
-    <div class="via" aria-hidden="true"></div>
-    <div class="section-head">
-      <div class="eyebrow">Recognition</div>
-      <h2>Achievements & awards</h2>
-    </div>
-    <div class="ach-list">
-      <div class="ach-item"><div class="dot"></div><div><div class="t">Robo ComBat Competition — 2nd Place</div><div class="d">COMSATS University Islamabad, Attock (Dec 2023). Designed and built a combat robot.</div></div></div>
-      <div class="ach-item"><div class="dot"></div><div><div class="t">Prime Minister's Laptop Scheme 2023</div><div class="d">National award selected on the basis of exceptional academic performance.</div></div></div>
-      <div class="ach-item"><div class="dot"></div><div><div class="t">PEEF Certificate of Scholarship (2022)</div><div class="d">Punjab Educational Endowment Fund — academic achievement at Intermediate level.</div></div></div>
-      <div class="ach-item"><div class="dot"></div><div><div class="t">Handball Team Captain</div><div class="d">Led college team to 3rd position, Inter Daanish & COEs Annual Sports 2019.</div></div></div>
-      <div class="ach-item"><div class="dot"></div><div><div class="t">World Space Week 2021 (SUPARCO)</div><div class="d">Recognized for outstanding contribution and managerial skills organizing the event.</div></div></div>
-    </div>
-  </section>
- 
-  <!-- CONTACT -->
-  <footer id="contact">
-    <div class="contact-panel">
-      <h2>Let's build something that has to work.</h2>
-      <p>Open to AI/ML engineering roles, computer vision work, and graduate research positions.</p>
-      <div class="contact-row">
-        <a class="btn primary" href="mailto:sumairaawann0502@gmail.com">sumairaawann0502@gmail.com</a>
-        <a class="btn" href="tel:+923085935330">+92 308 5935330</a>
-        <a class="btn" href="https://github.com/SumairaSafeer" target="_blank" rel="noopener">GitHub ↗</a>
-        <a class="btn" href="https://www.linkedin.com/in/sumaira-safeer-948804418" target="_blank" rel="noopener">LinkedIn ↗</a>
-      </div>
-    </div>
-    <div class="foot-note">Mianwali, Punjab, Pakistan · Built and maintained by Sumaira Safeer</div>
-  </footer>
- 
-</div>
- 
-<script>
-  // scroll reveal
-  if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
-    const els = document.querySelectorAll('section, .proj-card, .repo-cat');
-    els.forEach(el => el.classList.add('reveal'));
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { threshold: 0.08 });
-    els.forEach(el => io.observe(el));
-  }
-</script>
+    </section>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
 </body>
 </html>
